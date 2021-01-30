@@ -63,6 +63,7 @@ def submit_order(request):
         order.order_value = cart_value
         order.save(update_fields=['order_value'])
         request.session['order_id'] = order.pk
+        request.session['cart'] = list()
     return FileNotFoundError
 
 

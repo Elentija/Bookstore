@@ -5,14 +5,23 @@
 <br/>
 <form action="" method="POST">
     {% csrf_token %}
-    <div >
-        <label>Wartość zamówienia</label>
-        <p> {{ order.order_value }} </p>
+    <div>
+        <div>
+            <label>Wartość zamówienia: </label>
+            <p> {{ order.order_value }}zł </p>
+        </div>
+        <hr/>
 
-        <label>Adres</label>
-        <p> {{ delivery.address }} </p>
+        <div>
+            <label>Adres:</label>
+            <p>
+                Miasto: {{ delivery.address.city }}
+                <br/> Ulica: {{ delivery.address.street}} {{ delivery.address.number}}
+                <br/> {{ delivery.address.zip_code}}
+            </p>
+        </div>
     </div>
-    <button type="submit" class="save btn btn-default glyphicon glyphicon-arrow-right"></button>
+  <a href="{% url 'book_list' %}">Wróć do strony głównej</a>
 </form>
 </div>
 {% endblock %}

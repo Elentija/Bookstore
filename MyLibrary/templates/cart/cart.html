@@ -27,17 +27,18 @@
             {% endfor %}
         </tbody>
         </table>
+
+        {% if books %}
         <div>
             <p class="glyphicon-import">Wartość koszyka: {{cart_value}} zł.</p>
         </div>
         <div>
-            <a href="{% url 'order_address' %}" class="top-menu button"><span style="float:left; color: #71ef00">Kup</span></a>
-            <form action="{% url 'order_address' %}" method="POST">
+            <form action="{% url 'order_address' %}" method="POST" style="float:left">
                 {% csrf_token %}
-                <button class="btn btn-sm btn-danger"  type="submit"><i class="top-menu button">Złóż zamówienie</i> </button>
-            </form>
+                <button class="btn btn-sm btn-danger" type="submit"><i class="top-menu button">Złóż zamówienie</i></button>
+            </form>}
+            {% endif %}
         </div>
     </div>
 </div>
-
 {% endblock %}

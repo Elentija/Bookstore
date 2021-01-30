@@ -9,7 +9,6 @@
 <body>
 <div class="page-header">
     <a href="{% url 'client_logout' %}" class="top-menu"><span class="glyphicon glyphicon-chevron-right" style="float:left; color: #ffffff"></span></a>
-    <a href="{% url 'cart_all' %}" class="top-menu"><span class="glyphicon glyphicon-shopping-cart" style="float:left; color: #ffffff"></span></a>
     <h1><a href="/">Księgarnia internetowa Libro</a></h1>
 </div>
 <div class="content container">
@@ -33,12 +32,4 @@
 
 </body>
 </html>
-<script>
-    $(document).ready(function(){
-        window.setTimeout(function() {
-            $(".alert").fadeTo(500, 0).slideUp(500, function(){
-                $(this).remove();
-            });
-        }, 5000);
-    });
-</script>
+

@@ -100,3 +100,9 @@ class Delivery(models.Model):
 
     def __str__(self):
         return f"{self.delivery_method}"
+
+
+class BookRating(models.Model):
+    book = models.ForeignKey(Book, null=True, on_delete=models.SET_NULL)
+    client = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
+    rate = models.IntegerField()
