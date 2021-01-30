@@ -1,0 +1,13 @@
+{% extends 'client/base.html' %}
+
+{% block content %}
+<ol>
+{% for client in clients %}
+            <div class="post">
+                <div class="date">
+                    <li><h1><a href="{% url 'client_details' pk=client.pk %}">{{ client.first_name }} {{client.last_name}}</a></h1></li>
+                </div>
+            </div>
+            {% endfor %}
+</ol>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'book/base.html' %}
+
+{% block content %}
+<ol>
+{% for book in books %}
+            <div class="post">
+                <div class="date">
+                    <li style="float: left"><h1><a href="{% url 'book_details' pk=book.pk %}">{{ book.title }}</a></h1></li>
+                    <a href="{% url 'add_to_cart' pk=book.pk  %}" class="top-menu button"><span style="float:left; color: #71ef00">Kup</span></a>
+                    <a href="{% url 'book_details' pk=book.pk %}" class="top-menu button"><span style="float:left; color: #71ef00">Szczegóły</span></a>
+                    <hr/>
+                </div>
+            </div>
+            {% endfor %}
+</ol>
+{% endblock %}
