@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.utils.timezone import now
 
 from MyLibrary.forms import NewAddressForm, NewDeliveryForm
-from MyLibrary.models import Book, ProductsInBasket, Order, Address
+from MyLibrary.models import Book, ProductsInBasket, Order, Address, Delivery
 from MyLibrary.static.static_value import delivery_price
 
 
@@ -35,15 +35,12 @@ def order_set_delivery(request, pk):
         form = NewDeliveryForm(request.POST)
         order_id = request.session.get('order_id')
         order = Order.objects.get(pk=order_id)
-        address = Address.object.get(pk=pk)
-        form.cleaned_data['order'] = order
-        form.cleaned_data['price'] = get_delivery_price(form.delivery_method.__str__())
-        form.cleaned_data['address'] = address
-
-        if form.is_valid():
-            form.save()
-            return redirect('order_summary', pk=order_id)
-        return redirect('order_delivery')
+        address = Address.objects.get(pk=pk)
+        delivery_meth = form.Meta.model.delivery_method
+        delivery = Delivery(delivery_method=delivery_meth, order=order,
+                            price=get_delivery_price(delivery_meth).__str__(), address=address)
+        delivery.save()
+        return redirect('order_summary', pk=order_id)
     else:
         form = NewDeliveryForm()
         return render(request, 'order/order_delivery.html', {'form': form})
@@ -70,5 +67,6 @@ def submit_order(request):
 
 
 def order_summary(request, pk):
-    order = Order.objects.select_related('address').get(pk=pk)
-    return render(request, 'order/order_summary.html', {'order': order})
+    order = Order.objects.get(pk=pk)
+    delivery = Delivery.objects.select_related('address').get(order=order)
+    return render(request, 'order/order_summary.html', {'order': order, 'delivery': delivery})
