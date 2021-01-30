@@ -1,0 +1,17 @@
+{% load static %}
+<html>
+<head>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{% static 'css/client.css' %}">
+</head>
+
+<body>
+<div class="page-header">
+    <a href="{% url 'client_login' %}" class="top-menu"><span class="glyphicon glyphicon-user" style="float:left; color: #ffffff"></span></a>
+    <a href="{% url 'client_register' %}" class="top-menu"><span class="glyphicon glyphicon-plus" style="float:left; color: #ffffff"></span></a>
+    <h1><a href="/">Księgarnia internetowa Libro</a></h1>
+</div>
+</body>
+</html>

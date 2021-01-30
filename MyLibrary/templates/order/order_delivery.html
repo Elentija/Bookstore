@@ -1,0 +1,15 @@
+{% extends 'order/base.html' %}
+
+{% block content %}
+<h4>Wybierz sposób dostawy</h4>
+<br/>
+<form action="" method="POST">
+    {% csrf_token %}
+    <div >
+        <label>Sposób dostawy</label>
+        <p> {{ form.delivery_method }} </p>
+    </div>
+    <button type="submit" class="save btn btn-default glyphicon glyphicon-arrow-right"></button>
+</form>
+</div>
+{% endblock %}

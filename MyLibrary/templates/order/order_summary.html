@@ -1,0 +1,18 @@
+{% extends 'order/base.html' %}
+
+{% block content %}
+<h4>Twoje zamówienie zostało złożone, oto jego szczegóły: </h4>
+<br/>
+<form action="" method="POST">
+    {% csrf_token %}
+    <div >
+        <label>Wartość zamówienia</label>
+        <p> {{ order.order_value }} </p>
+
+        <label>Adres</label>
+        <p> {{ order.address }} </p>
+    </div>
+    <button type="submit" class="save btn btn-default glyphicon glyphicon-arrow-right"></button>
+</form>
+</div>
+{% endblock %}
