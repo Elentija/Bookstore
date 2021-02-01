@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from MyLibrary.models import Client
 
 
 def home(request):

@@ -3,7 +3,36 @@
 {% block content %}
 <h2>Rejestracja</h2>
 <form method="POST" class="post-form">{% csrf_token %}
-    {{ form.as_p }}
+    <div>
+        <label>Imię: </label>
+        {{ form.first_name }}
+        <p> {{ form.first_name.help_text}}</p>
+    </div>
+    <div>
+        <label>Nazwisko: </label>
+        {{ form.last_name }}
+        <p> {{ form.first_name.help_text}}</p>
+    </div>
+    <div>
+        <label>Email: </label>
+        {{ form.email }}
+        <p> {{ form.email.help_text}}</p>
+    </div>
+    <div>
+        <label>Login: </label>
+        {{ form.username }}
+        <p> {{ form.username.help_text}}</p>
+    </div>
+    <div>
+        <label>Hasło: </label>
+        {{ form.password1 }}
+        <p> {{ form.password1.help_text}}</p>
+    </div>
+    <div>
+        <label>Powtórz hasło: </label>
+        {{ form.password2 }}
+    </div>
+    <br/>
     <button type="submit" class="save btn btn-default">Zarejestruj się</button>
 </form>
 {% endblock %}

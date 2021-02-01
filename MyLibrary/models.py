@@ -106,3 +106,15 @@ class BookRating(models.Model):
     book = models.ForeignKey(Book, null=True, on_delete=models.SET_NULL)
     client = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
     rate = models.IntegerField()
+
+    def __str__(self):
+        return f"{self.book.title}: {self.rate} from {self.client.last_name}"
+
+
+class Movie(models.Model):
+    title = models.CharField(max_length=60)
+    author = models.ForeignKey(Author, null=True, on_delete=models.CASCADE)
+    rate = models.DecimalField(max_digits=2, decimal_places=1)
+    price = models.DecimalField(max_digits=5, decimal_places=2)
+    release_date = models.DateTimeField(auto_now=False, auto_now_add=False)
+    quantity_in_watehause = models.IntegerField()

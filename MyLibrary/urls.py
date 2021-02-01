@@ -21,5 +21,8 @@ urlpatterns = [
     path('order/submit_order', views.submit_order, name='submit_order'),
     path('order/summary/<int:pk>', views.order_summary, name='order_summary'),
 
+    path('recommendation/<int:pk>', views.rate_new, name='rate_new'),
+    # path('recommendation/sort/<int:pk>', views.sort_book_by_recommendation, name='sort_by_rate'),
+
     path('home', views.home, name='home'),
     ]

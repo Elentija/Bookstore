@@ -14,10 +14,12 @@ def add_to_cart(request, pk):
         book.quantity_in_watehause=-1
 
         books = list()
+        cart_value = 0
         for x in cart:
             book = Book.objects.get(pk=x)
             books.append(book)
-        return render(request, 'cart/cart.html', {'books': books})
+            cart_value += book.price
+    return render(request, 'cart/cart.html', {'books': books, 'cart_value': cart_value})
     return redirect('book_list.html')
 
 
@@ -41,9 +43,11 @@ def book_remove(request, pk):
 
     request.session['cart'] = cart
     books = list()
+    cart_value = 0
     for x in cart:
         book = Book.objects.get(pk=x)
         books.append(book)
-    return render(request, 'cart/cart.html', {'books': books})
+        cart_value += book.price
+    return render(request, 'cart/cart.html', {'books': books, 'cart_value': cart_value})
 
 

@@ -1,1 +1,8 @@
 Django~=2.2.4
+pip~=20.3.3
+pytz~=2020.5
+sqlparse~=0.4.1
+numpy~=1.19.5
+setuptools~=51.3.3
+pandas~=1.2.1
+scikit-learn~=0.24.1

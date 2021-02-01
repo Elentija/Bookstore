@@ -68,6 +68,6 @@ def submit_order(request):
 
 
 def order_summary(request, pk):
-    order = Order.objects.get(pk=pk)
+    order = Order.objects.select_related('client').get(pk=pk)
     delivery = Delivery.objects.select_related('address').get(order=order)
     return render(request, 'order/order_summary.html', {'order': order, 'delivery': delivery})

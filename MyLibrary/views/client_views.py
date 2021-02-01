@@ -48,7 +48,7 @@ def client_login(request):
 def client_register(request):
     if request.user.is_authenticated:
         messages.success(request, 'Już posiadasz konto')
-        return redirect('client_register')
+        return redirect('client_login')
     else:
         if request.method == 'POST':
             form = ClientForm(request.POST)
@@ -59,9 +59,10 @@ def client_register(request):
                 user = authenticate(username=username, password=raw_password)
                 login(request, user)
                 return redirect('book_list')
+            return redirect('client_register')
         else:
             form = ClientForm()
-            return render(request, 'client/client_edit.html', {'form': form})
+        return render(request, 'client/client_edit.html', {'form': form})
 
 
 def client_logout(request):

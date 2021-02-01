@@ -7,8 +7,8 @@
         <table class="table table-striped">
         <thead>
             <tr>
-            <th scope="col">Product</th>
-            <th scope="col" class="left">Price</th>
+            <th scope="col">Produkt</th>
+            <th scope="col" class="left">Cena</th>
             <th scope="col"></th>
             </tr>
         </thead>
@@ -30,13 +30,13 @@
 
         {% if books %}
         <div>
-            <p class="glyphicon-import">Wartość koszyka: {{cart_value}} zł.</p>
+            <p style="font-size: large; font-style: oblique">Wartość koszyka: {{cart_value}} zł.</p>
         </div>
         <div>
-            <form action="{% url 'order_address' %}" method="POST" style="float:left">
+            <form action="{% url 'order_address' %}" method="POST" style="float:right; color: white">
                 {% csrf_token %}
-                <button class="btn btn-sm btn-danger" type="submit"><i class="top-menu button">Złóż zamówienie</i></button>
-            </form>}
+                <button class="top-menu button" type="submit">Złóż zamówienie</button>
+            </form>
             {% endif %}
         </div>
     </div>

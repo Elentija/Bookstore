@@ -1,16 +1,18 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
-from .models import Client, Book, Address, Delivery
+from .models import Client, Book, Address, Delivery, BookRating
 
 
 class ClientForm(UserCreationForm):
     first_name = forms.CharField(max_length=30, required=False, help_text='Optional.')
     last_name = forms.CharField(max_length=30, required=False, help_text='Optional.')
+    email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')
 
     class Meta:
-        model = Client
-        fields = ('first_name', 'last_name', 'login', 'password', 'password2')
+        model = User
+        fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2', )
 
 
 class ClientLoginForm(forms.Form):
@@ -34,3 +36,10 @@ class NewDeliveryForm(forms.ModelForm):
     class Meta:
         model = Delivery
         fields = ['price', 'address', 'order', 'delivery_method']
+
+
+class RatingForm(forms.ModelForm):
+    class Meta:
+        model = BookRating
+        fields = ('book', 'client', 'rate')
+

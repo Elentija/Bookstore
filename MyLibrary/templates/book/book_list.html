@@ -1,16 +1,27 @@
 {% extends 'book/base.html' %}
 
 {% block content %}
-<ol>
-{% for book in books %}
-            <div class="post">
-                <div class="date">
-                    <li style="float: left"><h1><a href="{% url 'book_details' pk=book.pk %}">{{ book.title }}</a></h1></li>
-                    <a href="{% url 'add_to_cart' pk=book.pk  %}" class="top-menu button"><span style="float:left; color: #71ef00">Kup</span></a>
+<h2>Nasza oferta:</h2>
+<div class="post">
+    <div class="date">
+        <table>
+            {% for book in books %}
+            <tr>
+                <td style="padding-right: 40px">
+                    <h3><li><a style="color: black" href="{% url 'book_details' pk=book.pk %}">{{ book.title }}</a></li></h3>
+                </td>
+                <td>
+                    <a href="{% url 'add_to_cart' pk=book.pk  %}" class="top-menu button"><span style="float:right; color: #71ef00">Kup</span></a>
+                </td>
+                <td>
                     <a href="{% url 'book_details' pk=book.pk %}" class="top-menu button"><span style="float:left; color: #71ef00">Szczegóły</span></a>
-                    <hr/>
-                </div>
-            </div>
+                </td>
+                <td>
+                    <a href="{% url 'rate_new' pk=book.pk %}" class="top-menu button" style="size: 10px"><span style="float:left; color: #71ef00">Oceń</span></a>
+                </td>
+            </tr>
             {% endfor %}
-</ol>
+        </table>
+    </div>
+</div>
 {% endblock %}

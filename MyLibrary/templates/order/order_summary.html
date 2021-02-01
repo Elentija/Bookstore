@@ -7,21 +7,27 @@
     {% csrf_token %}
     <div>
         <div>
-            <label>Wartość zamówienia: </label>
+            <label style="font-size: medium; font-style: oblique">Wartość zamówienia: </label>
             <p> {{ order.order_value }}zł </p>
         </div>
         <hr/>
 
         <div>
-            <label>Adres:</label>
+            <label style="font-size: medium; font-style: oblique">Adres:</label>
             <p>
                 Miasto: {{ delivery.address.city }}
                 <br/> Ulica: {{ delivery.address.street}} {{ delivery.address.number}}
                 <br/> {{ delivery.address.zip_code}}
             </p>
         </div>
+        <hr/>
+
+        <div>
+            <label style="font-size: medium; font-style: oblique">Zamawiający:</label>
+            <p>{{ order.client.first_name }} {{order.client.last_name }}</p>
+        </div>
     </div>
-  <a href="{% url 'book_list' %}">Wróć do strony głównej</a>
+  <a class="top-menu button" style="color: #78e011" href="{% url 'book_list' %}">Wróć do strony głównej</a>
 </form>
 </div>
 {% endblock %}

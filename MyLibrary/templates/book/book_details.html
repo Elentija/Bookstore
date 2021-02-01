@@ -1,8 +1,16 @@
 {% extends 'book/base.html' %}
-
 {% block content %}
-<div >
-    <label>Szczegóły:</label>
-    <p>{{ book.title }} </p>
+<div>
+    <h2>Szczegóły:</h2>
+    <div class="details">
+        <ol style="font-size: large; font-style: oblique">Tytuł: {{ book.title }}</ol>
+        <ol style="font-size: large; font-style: oblique">Autor: {{ book.author }}</ol>
+        <ol style="font-size: large; font-style: oblique">Kategoria: {{ book.category }}</ol>
+        <ol style="font-size: large; font-style: oblique">Data wydania: {{ book.release_date.day }}/{{ book.release_date.month }}/{{ book.release_date.year }}</ol>
+        <ol style="font-size: large; font-style: oblique">Cena: {{ book.price }}zł</ol>
+    </div>
+    <div>
+        <a href="{% url 'book_list' %}" class="top-menu button"><span class="glyphicon glyphicon-arrow-left" style="color: #78e011"></span></a>
+    </div>
 </div>
 {% endblock %}
